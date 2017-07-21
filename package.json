@@ -1,6 +1,6 @@
 {
   "name": "authorization_api",
-  "version": "9.0.000.00.598",
+  "version": "1.0.0",
   "description": "Authorization_API",
   "license": "Unlicense",
   "main": "src/index.js",
