@@ -1,11 +1,20 @@
 {
-  "name": "authorization_api",
+  "name": "genesys-authorization-client-js",
   "version": "1.0.0",
-  "description": "Authorization_API",
-  "license": "Unlicense",
+  "description": "Interface to OAuth Authorization API",
+  "license": "MIT",
   "main": "src/index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --recursive"
+  },
+  "keywords": [
+    "OAuth",
+    "js",
+    "genesys"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/GenesysPureEngage/authorization-client-js.git"
   },
   "dependencies": {
     "superagent": "1.7.1"
@@ -14,5 +23,8 @@
     "mocha": "~2.3.4",
     "sinon": "1.17.3",
     "expect.js": "~0.3.1"
+  },
+  "engines": {
+    "node": ">= 4.0"
   }
 }
