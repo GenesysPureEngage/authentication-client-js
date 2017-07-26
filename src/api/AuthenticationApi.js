@@ -395,18 +395,50 @@
     /**
      * Endpoint to retrieve token
      * Can be called directly for Client Credential and Resource Owner Code flow.  Resource Owner example:   &#x60;curl client_name:client_secret@localhost:8095/oauth/token -d grant_type&#x3D;password -d client_id&#x3D;external_api_client-d scope&#x3D;openid -d username&#x3D;domain\\\\user -d password&#x3D;password&#x60;   Client credentials example:   &#x60;curl client_name:client_secret@localhost:8095/oauth/token -d grant_type&#x3D;client_credentials -d scope&#x3D;openid&#x60;
+     * @param {module:model/String} grantType Grant type
+     * @param {String} clientId Client ID (id of application/service registered as client in IDP)
+     * @param {String} username ConfigServer person username
+     * @param {String} password ConfigServer person password
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.authorization Basic authorization. Should contains client_id and secret Example: &#39;Authorization: Basic Y3...MQ&#x3D;&#x3D;&#39;
      * @param {module:api/AuthenticationApi~retrieveTokenCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/DefaultOAuth2AccessToken}
      */
-    this.retrieveToken = function(callback) {
+    this.retrieveToken = function(grantType, clientId, username, password, opts, callback) {
+      opts = opts || {};
       var postBody = null;
+
+      // verify the required parameter 'grantType' is set
+      if (grantType == undefined || grantType == null) {
+        throw new Error("Missing the required parameter 'grantType' when calling retrieveToken");
+      }
+
+      // verify the required parameter 'clientId' is set
+      if (clientId == undefined || clientId == null) {
+        throw new Error("Missing the required parameter 'clientId' when calling retrieveToken");
+      }
+
+      // verify the required parameter 'username' is set
+      if (username == undefined || username == null) {
+        throw new Error("Missing the required parameter 'username' when calling retrieveToken");
+      }
+
+      // verify the required parameter 'password' is set
+      if (password == undefined || password == null) {
+        throw new Error("Missing the required parameter 'password' when calling retrieveToken");
+      }
 
 
       var pathParams = {
       };
       var queryParams = {
+        'grant_type': grantType,
+        'client_id': clientId,
+        'username': username,
+        'password': password
       };
       var headerParams = {
+        'Authorization': opts['authorization']
       };
       var formParams = {
       };
