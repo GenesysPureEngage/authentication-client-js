@@ -444,7 +444,7 @@
       };
 
       var authNames = [];
-      var contentTypes = ['application/x-www-form-urlencoded'];
+      var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = DefaultOAuth2AccessToken;
 
