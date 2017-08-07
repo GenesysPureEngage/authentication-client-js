@@ -45,13 +45,6 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
-    /**
-     * Callback function to receive the result of the authorize operation.
-     * @callback module:api/AuthenticationApi~authorizeCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Endpoint to perform authorization
@@ -61,9 +54,9 @@
      * @param {String} redirectUri Redirect URI - will be the part of URL returned in &#39;Location&#39; header
      * @param {Object} opts Optional parameters
      * @param {String} opts.authorization Basic authorization. Example: &#39;Authorization: Basic Y3...MQ&#x3D;&#x3D;&#39;
-     * @param {module:api/AuthenticationApi~authorizeCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    this.authorize = function(responseType, clientId, redirectUri, opts, callback) {
+    this.authorize = function(responseType, clientId, redirectUri, opts) {
       opts = opts || {};
       var postBody = null;
 
@@ -104,26 +97,18 @@
       return this.apiClient.callApi(
         '/oauth/authorize', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the changePassword operation.
-     * @callback module:api/AuthenticationApi~changePasswordCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Change user password
      * Change user password
      * @param {module:model/ApiRequestChangePasswordOperation} request request
-     * @param {module:api/AuthenticationApi~changePasswordCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiResponse}
      */
-    this.changePassword = function(request, callback) {
+    this.changePassword = function(request) {
       var postBody = request;
 
       // verify the required parameter 'request' is set
@@ -149,26 +134,18 @@
       return this.apiClient.callApi(
         '/change-password', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the domainInfo operation.
-     * @callback module:api/AuthenticationApi~domainInfoCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiResponseDomainLookupResult} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Get domain and authentication method by user name or domain name
      * Get domain and authentication method by user name or domain name
      * @param {module:model/ApiRequestDomainLookupOperation} lookupOperation lookupOperation
-     * @param {module:api/AuthenticationApi~domainInfoCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiResponseDomainLookupResult}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiResponseDomainLookupResult}
      */
-    this.domainInfo = function(lookupOperation, callback) {
+    this.domainInfo = function(lookupOperation) {
       var postBody = lookupOperation;
 
       // verify the required parameter 'lookupOperation' is set
@@ -194,25 +171,17 @@
       return this.apiClient.callApi(
         '/domain-lookup', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the getLoggedout operation.
-     * @callback module:api/AuthenticationApi~getLoggedoutCallback
-     * @param {String} error Error message, if any.
-     * @param {Object} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Get logged out clients information
      * Get logged out clients information
-     * @param {module:api/AuthenticationApi~getLoggedoutCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Object}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Object}
      */
-    this.getLoggedout = function(callback) {
+    this.getLoggedout = function() {
       var postBody = null;
 
 
@@ -233,17 +202,10 @@
       return this.apiClient.callApi(
         '/loggedout', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the getUserInfo operation.
-     * @callback module:api/AuthenticationApi~getUserInfoCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CloudUserDetails} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Get user principal by OAUTH token
@@ -251,10 +213,9 @@
      * @param {String} authorization OAuth 2.0 Bearer Token. Example: \&quot;Authorization: bearer a4b5da75-a584-4053-9227-0f0ab23ff06e\&quot; 
      * @param {Object} opts Optional parameters
      * @param {module:model/Authentication} opts.auth auth
-     * @param {module:api/AuthenticationApi~getUserInfoCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CloudUserDetails}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CloudUserDetails}
      */
-    this.getUserInfo = function(authorization, opts, callback) {
+    this.getUserInfo = function(authorization, opts) {
       opts = opts || {};
       var postBody = opts['auth'];
 
@@ -282,17 +243,10 @@
       return this.apiClient.callApi(
         '/userinfo', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the login operation.
-     * @callback module:api/AuthenticationApi~loginCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Endpoint to perform form-based authentication
@@ -302,9 +256,9 @@
      * @param {String} opts.password Password
      * @param {String} opts.domain Domain - used for SAML login only
      * @param {module:model/String} opts.saml SAML - flag indication saml login
-     * @param {module:api/AuthenticationApi~loginCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    this.login = function(opts, callback) {
+    this.login = function(opts) {
       opts = opts || {};
       var postBody = null;
 
@@ -330,17 +284,10 @@
       return this.apiClient.callApi(
         '/login', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the logout operation.
-     * @callback module:api/AuthenticationApi~logoutCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Logout user
@@ -348,10 +295,9 @@
      * @param {String} authorization OAuth 2.0 Bearer Token. Example: \&quot;Authorization: bearer a4b5da75-a584-4053-9227-0f0ab23ff06e\&quot; 
      * @param {Object} opts Optional parameters
      * @param {Boolean} opts.global If set all tokens for current user will be invalidated, otherwise only current token will be invalidated.
-     * @param {module:api/AuthenticationApi~logoutCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiResponse}
      */
-    this.logout = function(authorization, opts, callback) {
+    this.logout = function(authorization, opts) {
       opts = opts || {};
       var postBody = null;
 
@@ -380,17 +326,10 @@
       return this.apiClient.callApi(
         '/logout', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the retrieveToken operation.
-     * @callback module:api/AuthenticationApi~retrieveTokenCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/DefaultOAuth2AccessToken} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Endpoint to retrieve token
@@ -401,10 +340,9 @@
      * @param {String} password ConfigServer person password
      * @param {Object} opts Optional parameters
      * @param {String} opts.authorization Basic authorization. Should contains client_id and secret Example: &#39;Authorization: Basic Y3...MQ&#x3D;&#x3D;&#39;
-     * @param {module:api/AuthenticationApi~retrieveTokenCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/DefaultOAuth2AccessToken}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/DefaultOAuth2AccessToken}
      */
-    this.retrieveToken = function(grantType, clientId, username, password, opts, callback) {
+    this.retrieveToken = function(grantType, clientId, username, password, opts) {
       opts = opts || {};
       var postBody = null;
 
@@ -451,7 +389,7 @@
       return this.apiClient.callApi(
         '/oauth/token', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
   };

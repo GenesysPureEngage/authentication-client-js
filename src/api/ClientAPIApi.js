@@ -45,23 +45,15 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
-    /**
-     * Callback function to receive the result of the addClient operation.
-     * @callback module:api/ClientAPIApi~addClientCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ResponseEntity} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Register a new client
      * Register a new client
      * @param {String} authorization OAuth 2.0 Bearer Token. Example: \&quot;Authorization: bearer a4b5da75-a584-4053-9227-0f0ab23ff06e\&quot; 
      * @param {module:model/ApiRequestBaseClientDetails} details details
-     * @param {module:api/ClientAPIApi~addClientCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ResponseEntity}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ResponseEntity}
      */
-    this.addClient = function(authorization, details, callback) {
+    this.addClient = function(authorization, details) {
       var postBody = details;
 
       // verify the required parameter 'authorization' is set
@@ -93,27 +85,19 @@
       return this.apiClient.callApi(
         '/clients', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the deleteClient operation.
-     * @callback module:api/ClientAPIApi~deleteClientCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ResponseEntity} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Delete client registration
      * Delete client registration
      * @param {String} authorization OAuth 2.0 Bearer Token. Example: \&quot;Authorization: bearer a4b5da75-a584-4053-9227-0f0ab23ff06e\&quot; 
      * @param {String} id id
-     * @param {module:api/ClientAPIApi~deleteClientCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ResponseEntity}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ResponseEntity}
      */
-    this.deleteClient = function(authorization, id, callback) {
+    this.deleteClient = function(authorization, id) {
       var postBody = null;
 
       // verify the required parameter 'authorization' is set
@@ -146,27 +130,19 @@
       return this.apiClient.callApi(
         '/clients/{id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the getClient operation.
-     * @callback module:api/ClientAPIApi~getClientCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ResponseEntity} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Get registered client&#39;s details
      * Get registered client&#39;s details
      * @param {String} authorization OAuth 2.0 Bearer Token. Example: \&quot;Authorization: bearer a4b5da75-a584-4053-9227-0f0ab23ff06e\&quot; 
      * @param {String} id id
-     * @param {module:api/ClientAPIApi~getClientCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ResponseEntity}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ResponseEntity}
      */
-    this.getClient = function(authorization, id, callback) {
+    this.getClient = function(authorization, id) {
       var postBody = null;
 
       // verify the required parameter 'authorization' is set
@@ -199,26 +175,18 @@
       return this.apiClient.callApi(
         '/clients/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the getClients operation.
-     * @callback module:api/ClientAPIApi~getClientsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiResponseListClientDetails} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Get detailed information about registered clients
      * Get detailed information about registered clients
      * @param {String} authorization OAuth 2.0 Bearer Token. Example: \&quot;Authorization: bearer a4b5da75-a584-4053-9227-0f0ab23ff06e\&quot; 
-     * @param {module:api/ClientAPIApi~getClientsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiResponseListClientDetails}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiResponseListClientDetails}
      */
-    this.getClients = function(authorization, callback) {
+    this.getClients = function(authorization) {
       var postBody = null;
 
       // verify the required parameter 'authorization' is set
@@ -245,17 +213,10 @@
       return this.apiClient.callApi(
         '/clients', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the updateClient operation.
-     * @callback module:api/ClientAPIApi~updateClientCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ResponseEntity} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Update client registration details
@@ -263,10 +224,9 @@
      * @param {String} authorization OAuth 2.0 Bearer Token. Example: \&quot;Authorization: bearer a4b5da75-a584-4053-9227-0f0ab23ff06e\&quot; 
      * @param {String} id id
      * @param {module:model/ApiRequestBaseClientDetails} details details
-     * @param {module:api/ClientAPIApi~updateClientCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ResponseEntity}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ResponseEntity}
      */
-    this.updateClient = function(authorization, id, details, callback) {
+    this.updateClient = function(authorization, id, details) {
       var postBody = details;
 
       // verify the required parameter 'authorization' is set
@@ -304,7 +264,7 @@
       return this.apiClient.callApi(
         '/clients/{id}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
   };
