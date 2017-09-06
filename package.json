@@ -1,6 +1,6 @@
 {
   "name": "genesys-authorization-client-js",
-  "version": "1.0.65",
+  "version": "1.0.66",
   "description": "Interface to OAuth Authorization API",
   "license": "MIT",
   "main": "src/index.js",
