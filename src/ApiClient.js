@@ -49,9 +49,9 @@ const CookieJar = require('cookiejar').CookieJar;
     /**
      * The base URL against which to resolve every API call's (relative) path.
      * @type {String}
-     * @default https://gws-usw1-int.genhtcc.com/auth/v3
+     * @default https://your-server.com/auth/v3
      */
-    this.basePath = 'https://gws-usw1-int.genhtcc.com/auth/v3'.replace(/\/+$/, '');
+    this.basePath = 'https://your-server.com/auth/v3'.replace(/\/+$/, '');
 
     /**
      * The authentication methods to be included for all API calls.
