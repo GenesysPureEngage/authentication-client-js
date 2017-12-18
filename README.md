@@ -9,7 +9,7 @@ The library is hosted on [GitHub](https://github.com/GenesysPureEngage/authentic
 Genesys recommends that you install the Authentication Client Library for Node.js with [NPM](https://npmjs.org/). Run the following command to install the library:
 
 ```
-npm i genesys-authorization-client-js
+npm i genesys-authentication-client-js
 ```
 
 ## Related Links
@@ -26,12 +26,12 @@ The Authentication Client Library includes one main class, [AuthenticationApi](h
 Here's an example of how you can use the Authentication Client Library to authenticate using the [Resource Owner Password Credentials Grant](https://tools.ietf.org/html/rfc6749#section-4.3) type.
 
 ``` javascript
-const authorization = require('genesys-authorization-client-js');
+const authentication = require('genesys-authentication-client-js');
 
 const apiKey = "<apiKey>";
 const apiUrl = "<apiUrl>";
 
-const client = new authorization.ApiClient();
+const client = new authentication.ApiClient();
 client.basePath = `${apiUrl}/auth/v3`;
 client.defaultHeaders = {'x-api-key': apiKey};
 client.enableCookies = true;
@@ -41,9 +41,9 @@ const agentPassword = "<agentPassword>";
 const clientId = "<clientId>";
 const clientSecret = "<clientSecret>";
 
-const authApi = new authorization.AuthenticationApi(client);
+const authApi = new authentication.AuthenticationApi(client);
 const opts = {
-    authorization: "Basic " + new Buffer(`${clientId}:${clientSecret}`).toString("base64"),
+    authentication: "Basic " + new Buffer(`${clientId}:${clientSecret}`).toString("base64"),
     clientId: clientId,
     scope: '*',
     username: agentUsername,
