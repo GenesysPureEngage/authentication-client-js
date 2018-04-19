@@ -25,7 +25,7 @@
     if (!root.AuthenticationApi) {
       root.AuthenticationApi = {};
     }
-    root.AuthenticationApi.ErrorResponse = factory(root.AuthenticationApi.ApiClient);
+    root.AuthenticationApi.JwtConvertResult = factory(root.AuthenticationApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,52 +34,44 @@
 
 
   /**
-   * The ErrorResponse model module.
-   * @module model/ErrorResponse
+   * The JwtConvertResult model module.
+   * @module model/JwtConvertResult
    * @version 9.0.000.10.1112
    */
 
   /**
-   * Constructs a new <code>ErrorResponse</code>.
-   * @alias module:model/ErrorResponse
+   * Constructs a new <code>JwtConvertResult</code>.
+   * @alias module:model/JwtConvertResult
    * @class
    */
   var exports = function() {
     var _this = this;
 
 
-
   };
 
   /**
-   * Constructs a <code>ErrorResponse</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>JwtConvertResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ErrorResponse} obj Optional instance to populate.
-   * @return {module:model/ErrorResponse} The populated <code>ErrorResponse</code> instance.
+   * @param {module:model/JwtConvertResult} obj Optional instance to populate.
+   * @return {module:model/JwtConvertResult} The populated <code>JwtConvertResult</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('error')) {
-        obj['error'] = ApiClient.convertToType(data['error'], 'String');
-      }
-      if (data.hasOwnProperty('error_description')) {
-        obj['error_description'] = ApiClient.convertToType(data['error_description'], 'String');
+      if (data.hasOwnProperty('jwtToken')) {
+        obj['jwtToken'] = ApiClient.convertToType(data['jwtToken'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * @member {String} error
+   * @member {String} jwtToken
    */
-  exports.prototype['error'] = undefined;
-  /**
-   * @member {String} error_description
-   */
-  exports.prototype['error_description'] = undefined;
+  exports.prototype['jwtToken'] = undefined;
 
 
 
