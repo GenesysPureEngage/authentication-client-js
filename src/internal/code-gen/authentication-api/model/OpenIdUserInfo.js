@@ -59,6 +59,7 @@
 
 
 
+
   };
 
   /**
@@ -101,6 +102,9 @@
       }
       if (data.hasOwnProperty('user_name')) {
         obj['user_name'] = ApiClient.convertToType(data['user_name'], 'String');
+      }
+      if (data.hasOwnProperty('properties')) {
+        obj['properties'] = ApiClient.convertToType(data['properties'], Object);
       }
     }
     return obj;
@@ -156,6 +160,11 @@
    * @member {String} user_name
    */
   exports.prototype['user_name'] = undefined;
+  /**
+   * The user's properties in Configuration Server.
+   * @member {Object} properties
+   */
+  exports.prototype['properties'] = undefined;
 
 
 

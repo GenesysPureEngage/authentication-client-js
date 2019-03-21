@@ -57,6 +57,7 @@
 
 
     _this['username'] = username;
+
   };
 
   /**
@@ -90,6 +91,9 @@
       }
       if (data.hasOwnProperty('username')) {
         obj['username'] = ApiClient.convertToType(data['username'], 'String');
+      }
+      if (data.hasOwnProperty('properties')) {
+        obj['properties'] = ApiClient.convertToType(data['properties'], Object);
       }
     }
     return obj;
@@ -130,6 +134,11 @@
    * @member {String} username
    */
   exports.prototype['username'] = undefined;
+  /**
+   * The user's properties in Configuration Server.
+   * @member {Object} properties
+   */
+  exports.prototype['properties'] = undefined;
 
 
 

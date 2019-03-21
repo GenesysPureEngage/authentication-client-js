@@ -295,10 +295,16 @@
 
     /**
      * getJwtInfo
+     * @param {String} authorization The OAuth 2 bearer access token you received from [/auth/v3/oauth/token](/reference/authentication/Authentication/index.html#retrieveToken). For example: \&quot;Authorization: bearer a4b5da75-a584-4053-9227-0f0ab23ff06e\&quot; 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiResponse} and HTTP response
      */
-    this.getJwtInfoUsingGETWithHttpInfo = function() {
+    this.getJwtInfoUsingGETWithHttpInfo = function(authorization) {
       var postBody = null;
+
+      // verify the required parameter 'authorization' is set
+      if (authorization === undefined || authorization === null) {
+        throw new Error("Missing the required parameter 'authorization' when calling getJwtInfoUsingGET");
+      }
 
 
       var pathParams = {
@@ -308,6 +314,7 @@
       var collectionQueryParams = {
       };
       var headerParams = {
+        'Authorization': authorization
       };
       var formParams = {
       };
@@ -326,10 +333,11 @@
 
     /**
      * getJwtInfo
+     * @param {String} authorization The OAuth 2 bearer access token you received from [/auth/v3/oauth/token](/reference/authentication/Authentication/index.html#retrieveToken). For example: \&quot;Authorization: bearer a4b5da75-a584-4053-9227-0f0ab23ff06e\&quot; 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiResponse}
      */
-    this.getJwtInfoUsingGET = function() {
-      return this.getJwtInfoUsingGETWithHttpInfo()
+    this.getJwtInfoUsingGET = function(authorization) {
+      return this.getJwtInfoUsingGETWithHttpInfo(authorization)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

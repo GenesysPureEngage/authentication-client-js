@@ -37,6 +37,7 @@ class AuthenticationApi {
      * @return {Object.<String, Object>} form A map of form parameters and their values
      */
     static createFormAuthCodeGrantType(redirectUri, code, opts) {
+        opts = opts || {};
         if (redirectUri === undefined || redirectUri === null) {
             throw new Error("Missing the required parameter 'redirectUri' when calling createFormAuthCodeGrantType");
         }
@@ -61,6 +62,7 @@ class AuthenticationApi {
      * @return {Object.<String, Object>} form A map of form parameters and their values.
      */
     static createFormPasswordGrantType(username, password, opts) {
+        opts = opts || {};
         if (username === undefined || username === null) {
             throw new Error("Missing the required parameter 'username' when calling createFormPasswordGrantType");
         }
@@ -85,6 +87,7 @@ class AuthenticationApi {
      * @return {Object.<String, Object>} form A map of form parameters and their values.
      */
     static createFormParamRefreshTokenGrantType(refreshToken, opts) {
+        opts = opts || {};
         if (refreshToken === undefined || refreshToken === null) {
             throw new Error("Missing the required parameter 'username' when calling createFormPasswordGrantType");
         }
@@ -103,6 +106,7 @@ class AuthenticationApi {
      * @return {Object.<String, Object>} form A map of form parameters and their values.
      */
     static createFormClientCredentialsGrantType(opts) {
+        opts = opts || {};
         return {
             'grant_type': 'client_credentials',
             'scope': opts['scope']
@@ -191,11 +195,12 @@ class AuthenticationApi {
 
     /**
      * getJwtInfo
+     * @param {String} authorization The OAuth 2 bearer access token. For example: \&quot;Authorization: bearer a4b5da75-a584-4053-9227-0f0ab23ff06e\&quot;
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiResponse} and HTTP response
      */
-    async getUserInfoJwt() {
+    async getUserInfoJwt(authorization) {
         this._log(`Getting jwt user information`);
-        return (await this.authApi.getJwtInfoUsingGET());
+        return (await this.authApi.getJwtInfoUsingGET(authorization));
     }
 
     /**
