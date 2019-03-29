@@ -168,7 +168,7 @@ class AuthenticationApi {
      */
     async changePassword(request, opts) {
         this._log(`Changing password`);
-        return (await this.authApi.changePassword(request, opts));
+        return (await this.authApi.changePassword({data: request}, opts));
     }
 
     /**
@@ -257,13 +257,12 @@ class AuthenticationApi {
     /**
      * Get authentication scheme.
      * Get the authentication scheme by user name or tenant name. The return value is   &#39;saml&#39; if the contact center has [Security Assertion Markup Language](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language)   (SAML) enabled; otherwise, the return value is &#39;basic&#39;.
-     * @param {Object} opts Optional parameters
-     * @param {module:model/AuthSchemeLookupData} opts.lookupData Data for scheme lookup.
+     * @param {module:model/AuthSchemeLookupData} lookup Data for scheme lookup.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiResponse}
      */
-    async getAuthScheme(opts) {
+    async getAuthScheme(lookup) {
         this._log(`Getting authentication scheme`);
-        return (await this.authApi.tenantInfo(opts))
+        return (await this.authApi.tenantInfo({data: lookup}))
     }
 }
 
