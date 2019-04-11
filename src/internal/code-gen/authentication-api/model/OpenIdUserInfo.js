@@ -44,7 +44,7 @@
    * This class describes the user in the system. Applicable to different entities (contact-center level user, application/service, cloud system admin)
    * @alias module:model/OpenIdUserInfo
    * @class
-   * @param authorities {module:model/UserRole} Authorities assigned to the user.
+   * @param authorities {Array.<module:model/UserRole>} Authorities assigned to the user.
    */
   var exports = function(authorities) {
     var _this = this;
@@ -77,7 +77,7 @@
         obj['aud'] = ApiClient.convertToType(data['aud'], 'String');
       }
       if (data.hasOwnProperty('authorities')) {
-        obj['authorities'] = UserRole.constructFromObject(data['authorities']);
+        obj['authorities'] = ApiClient.convertToType(data['authorities'], [UserRole]);
       }
       if (data.hasOwnProperty('contact_center_id')) {
         obj['contact_center_id'] = ApiClient.convertToType(data['contact_center_id'], 'String');
@@ -117,7 +117,7 @@
   exports.prototype['aud'] = undefined;
   /**
    * Authorities assigned to the user.
-   * @member {module:model/UserRole} authorities
+   * @member {Array.<module:model/UserRole>} authorities
    */
   exports.prototype['authorities'] = undefined;
   /**

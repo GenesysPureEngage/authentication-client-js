@@ -44,7 +44,7 @@
    * This class describes the user in the system. Applicable to different entities (contact-center level user, application/service, cloud system admin)
    * @alias module:model/CloudUserDetails
    * @class
-   * @param authorities {module:model/UserRole} Authorities assigned to the user.
+   * @param authorities {Array.<module:model/UserRole>} Authorities assigned to the user.
    * @param username {String} The system-wide unique name of the user. For contact center users, this includes the userName in Configuration Server, the DBID in Configuration Server and the contact center ID. For non-Configuration Server users the username can have other formats.
    */
   var exports = function(authorities, username) {
@@ -72,7 +72,7 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('authorities')) {
-        obj['authorities'] = UserRole.constructFromObject(data['authorities']);
+        obj['authorities'] = ApiClient.convertToType(data['authorities'], [UserRole]);
       }
       if (data.hasOwnProperty('cmeUserName')) {
         obj['cmeUserName'] = ApiClient.convertToType(data['cmeUserName'], 'String');
@@ -101,7 +101,7 @@
 
   /**
    * Authorities assigned to the user.
-   * @member {module:model/UserRole} authorities
+   * @member {Array.<module:model/UserRole>} authorities
    */
   exports.prototype['authorities'] = undefined;
   /**
