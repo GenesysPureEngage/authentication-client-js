@@ -25,7 +25,7 @@
     if (!root.AuthenticationApi) {
       root.AuthenticationApi = {};
     }
-    root.AuthenticationApi.ApiResponse = factory(root.AuthenticationApi.ApiClient, root.AuthenticationApi.ErrorResponse, root.AuthenticationApi.ResponseStatus);
+    root.AuthenticationApi.ApiResponseOfMap = factory(root.AuthenticationApi.ApiClient, root.AuthenticationApi.ErrorResponse, root.AuthenticationApi.ResponseStatus);
   }
 }(this, function(ApiClient, ErrorResponse, ResponseStatus) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The ApiResponse model module.
-   * @module model/ApiResponse
+   * The ApiResponseOfMap model module.
+   * @module model/ApiResponseOfMap
    * @version 9.0.000.39.1782
    */
 
   /**
-   * Constructs a new <code>ApiResponse</code>.
-   * @alias module:model/ApiResponse
+   * Constructs a new <code>ApiResponseOfMap</code>.
+   * @alias module:model/ApiResponseOfMap
    * @class
    * @param status {module:model/ResponseStatus} 
    */
@@ -55,11 +55,11 @@
   };
 
   /**
-   * Constructs a <code>ApiResponse</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ApiResponseOfMap</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ApiResponse} obj Optional instance to populate.
-   * @return {module:model/ApiResponse} The populated <code>ApiResponse</code> instance.
+   * @param {module:model/ApiResponseOfMap} obj Optional instance to populate.
+   * @return {module:model/ApiResponseOfMap} The populated <code>ApiResponseOfMap</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {

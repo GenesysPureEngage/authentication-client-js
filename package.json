@@ -1,9 +1,9 @@
 {
   "name": "genesys-authentication-client-js",
-  "version": "9.0.18",
+  "version": "9.0.20",
   "description": "Interface to OAuth Authentication API",
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --recursive"
   },
@@ -17,14 +17,15 @@
     "url": "git://github.com/GenesysPureEngage/authentication-client-js.git"
   },
   "dependencies": {
-    "superagent": "1.7.1"
+    "cookiejar": "^2.1.2",
+    "superagent": "3.7.0"
   },
   "devDependencies": {
-    "mocha": "~2.3.4",
-    "sinon": "1.17.3",
-    "expect.js": "~0.3.1"
+    "expect.js": "~0.3.1",
+    "mocha": "^6.1.4",
+    "sinon": "1.17.3"
   },
   "engines": {
-    "node": ">= 4.0"
+    "node": ">= 8.0"
   }
 }
