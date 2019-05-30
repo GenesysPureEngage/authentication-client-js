@@ -214,20 +214,6 @@ class AuthenticationApi {
     }
 
     /**
-     * Perform form-based authentication.
-     * Perform form-based authentication by submitting an agent&#39;s username and password.
-     * @param {String} username The agent&#39;s username, formatted as &#39;tenant\\username&#39;.
-     * @param {String} password The agent&#39;s password.
-     * @param {Object} opts Optional parameters
-     * @param {Boolean} opts.saml Specifies whether to login using [Security Assertion Markup Language](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language) (SAML).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
-     */
-    async signIn(username, password, opts) {
-        this._log(`Performing form-based authentication`);
-        return (await this.authApi.signIn(username, password, opts));
-    }
-
-    /**
      * Sign-out a logged in user
      * Sign-out the current user and invalidate either the current token or all tokens associated with the user.
      * @param {String} authorization The OAuth 2 bearer access token you received from [/auth/v3/oauth/token](/reference/authentication/Authentication/index.html#retrieveToken). For example: \&quot;Authorization: bearer a4b5da75-a584-4053-9227-0f0ab23ff06e\&quot;
@@ -253,17 +239,7 @@ class AuthenticationApi {
         this._log(`Sign out the user`);
         return (await this.authApi.signOut1(authorization, opts))
     }
-
-    /**
-     * Get authentication scheme.
-     * Get the authentication scheme by user name or tenant name. The return value is   &#39;saml&#39; if the contact center has [Security Assertion Markup Language](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language)   (SAML) enabled; otherwise, the return value is &#39;basic&#39;.
-     * @param {module:model/AuthSchemeLookupData} lookup Data for scheme lookup.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiResponse}
-     */
-    async getAuthScheme(lookup) {
-        this._log(`Getting authentication scheme`);
-        return (await this.authApi.tenantInfo({data: lookup}))
-    }
+    
 }
 
 module.exports = AuthenticationApi;
