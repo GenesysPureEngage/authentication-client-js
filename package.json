@@ -1,31 +1,31 @@
 {
-  "name": "genesys-authentication-client-js",
-  "version": "9.0.41",
-  "description": "Interface to OAuth Authentication API",
-  "license": "MIT",
-  "main": "./src/index.js",
-  "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --recursive"
-  },
-  "keywords": [
-    "OAuth",
-    "js",
-    "genesys"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/GenesysPureEngage/authentication-client-js.git"
-  },
-  "dependencies": {
-    "cookiejar": "^2.1.2",
-    "superagent": "3.7.0"
-  },
-  "devDependencies": {
-    "expect.js": "~0.3.1",
-    "mocha": "^6.1.4",
-    "sinon": "1.17.3"
-  },
-  "engines": {
-    "node": ">= 8.0"
-  }
+    "name": "genesys-authentication-client-js",
+    "version": "9.0.41",
+    "description": "Interface to OAuth Authentication API",
+    "license": "MIT",
+    "main": "./src/index.js",
+    "scripts": {
+        "test": "./node_modules/mocha/bin/mocha --recursive"
+    },
+    "keywords": [
+        "OAuth",
+        "js",
+        "genesys"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/GenesysPureEngage/authentication-client-js.git"
+    },
+    "dependencies": {
+        "cookiejar": "^2.1.2",
+        "superagent": "3.7.0"
+    },
+    "devDependencies": {
+        "expect.js": "~0.3.1",
+        "mocha": "^6.1.4",
+        "sinon": "1.17.3"
+    },
+    "engines": {
+        "node": ">= 8.0"
+    }
 }
