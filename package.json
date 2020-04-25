@@ -18,7 +18,8 @@
     },
     "dependencies": {
         "cookiejar": "^2.1.2",
-        "superagent": "3.7.0"
+        "superagent": "^5.2.2",
+        "superagent-proxy": "^2.0.0"
     },
     "devDependencies": {
         "expect.js": "~0.3.1",
