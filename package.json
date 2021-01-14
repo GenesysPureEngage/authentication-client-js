@@ -1,6 +1,6 @@
 {
     "name": "genesys-authentication-client-js",
-    "version": "9.0.63",
+    "version": "9.0.64",
     "description": "Interface to OAuth Authentication API",
     "license": "MIT",
     "main": "./src/index.js",
@@ -18,12 +18,12 @@
     },
     "dependencies": {
         "cookiejar": "^2.1.2",
-        "superagent": "^5.2.2",
+        "superagent": "^5.3.1",
         "superagent-proxy": "^2.0.0"
     },
     "devDependencies": {
         "expect.js": "~0.3.1",
-        "mocha": "^6.1.4",
+        "mocha": "^6.2.3",
         "sinon": "1.17.3"
     },
     "engines": {
