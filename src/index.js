@@ -36,8 +36,7 @@ class AuthenticationApi {
      * @param {String} opts.clientId Use to identify PUBLIC clients without password
      * @return {Object.<String, Object>} form A map of form parameters and their values
      */
-    static createFormAuthCodeGrantType(redirectUri, code, opts) {
-        opts = opts || {};
+    static createFormAuthCodeGrantType(redirectUri, code, opts = {}) {
         if (redirectUri === undefined || redirectUri === null) {
             throw new Error("Missing the required parameter 'redirectUri' when calling createFormAuthCodeGrantType");
         }
@@ -61,8 +60,7 @@ class AuthenticationApi {
      * @param {String} opts.scope The scope of the access request. The Authentication API supports only the &#x60;*&#x60; value.
      * @return {Object.<String, Object>} form A map of form parameters and their values.
      */
-    static createFormPasswordGrantType(username, password, opts) {
-        opts = opts || {};
+    static createFormPasswordGrantType(username, password, opts = {}) {
         if (username === undefined || username === null) {
             throw new Error("Missing the required parameter 'username' when calling createFormPasswordGrantType");
         }
@@ -86,8 +84,7 @@ class AuthenticationApi {
      * @param {String} opts.scope The scope of the access request. The Authentication API supports only the &#x60;*&#x60; value.
      * @return {Object.<String, Object>} form A map of form parameters and their values.
      */
-    static createFormParamRefreshTokenGrantType(refreshToken, opts) {
-        opts = opts || {};
+    static createFormParamRefreshTokenGrantType(refreshToken, opts = {}) {
         if (refreshToken === undefined || refreshToken === null) {
             throw new Error("Missing the required parameter 'username' when calling createFormPasswordGrantType");
         }
@@ -105,8 +102,7 @@ class AuthenticationApi {
      * @param {String} opts.scope The scope of the access request. The Authentication API supports only the &#x60;*&#x60; value.
      * @return {Object.<String, Object>} form A map of form parameters and their values.
      */
-    static createFormClientCredentialsGrantType(opts) {
-        opts = opts || {};
+    static createFormClientCredentialsGrantType(opts = {}) {
         return {
             'grant_type': 'client_credentials',
             'scope': opts['scope']
@@ -122,9 +118,8 @@ class AuthenticationApi {
      * @param {String} opts.authorization Basic authorization. For example: &#39;Authorization: Basic Y3...MQ&#x3D;&#x3D;&#39;
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/DefaultOAuth2AccessToken} and HTTP response
      */
-    async retrieveToken(form, opts) {
+    async retrieveToken(form, opts = {}) {
         this._log(`Retrieving auth token based on grant_type=${form['grant_type']}`);
-        opts = opts || {};
         if (form === undefined || form === null) {
             throw new Error("Missing the required parameter 'form' when calling retrieveToken");
         }
